@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Erika a Message 💌</title>
+  <link rel="stylesheet" href="../wave 57/message.css">
+  <script src="message.js" defer></script>
+</head>
+<body class="message-page">
+  <main class="message-card">
+    <div class="message-emoji" aria-hidden="true">💌</div>
+    <h1>Mag iwan ka na, andito ka na eh no turning back</h1>
+    <p class="intro">Write whatever you'd like to tell me. Your note will be sent privately to me. ♡</p>
+
+    <form class="message-form" id="messageForm">
+  
+      <input type="hidden" name="access_key" value="a12e560e-4b86-4690-8ce2-b3a97bf4ece1">
+      <input type="hidden" name="subject" value="A new message from Wave 57">
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+      <div>
+        <label for="senderName">Your name</label>
+        <input id="senderName" name="name" type="text" maxlength="100" placeholder="Ilalagay na yaaan, Hindi ako manghuhula beh">
+      </div>
+      <div>
+        <label for="senderMessage">Your message *</label>
+        <textarea id="senderMessage" name="message" maxlength="5000" required placeholder="Ilagay mo lahat ng hinanakit mo dito"></textarea>
+      </div>
+
+      <button class="message-submit" id="submitMessage" type="submit">Send mo na Wag mahiyaaaa</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div style="text-align:center">
+      <a class="back-link" href="index.html">← Back to the little notes</a>
+    </div>
+  </main>
+</body>
+</html>
