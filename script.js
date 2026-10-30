@@ -57,15 +57,35 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-            const music = document.getElementById("backgroundMusic");
+function initializeBackgroundMusic() {
+    const music = document.getElementById("backgroundMusic");
 
-            // Attempt to play music when the page loads
-            music.play()
-                .then(() => {
-                    console.log("Music is playing!");
-                })
-                .catch(error => {
-                    console.log("Autoplay was blocked by the browser.", error);
-                });
+    if (!music) {
+        console.log("No background music element found on this page.");
+        return;
+    }
+
+    music.loop = true;
+    music.volume = 0.5;
+
+    // Attempt autoplay
+    music.play()
+        .then(() => {
+            console.log("Background music is playing!");
+        })
+        .catch((error) => {
+            console.log("Autoplay failed:", error.name, error.message);
         });
+
+    // Report loading errors
+    music.addEventListener("error", () => {
+        console.error("Unable to load the music file.", music.error);
+    });
+}
+
+// Run after the HTML has been parsed
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeBackgroundMusic);
+} else {
+    initializeBackgroundMusic();
+}
