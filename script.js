@@ -56,3 +56,16 @@ document.addEventListener("keydown", (event) => {
     closeMessage();
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+            const music = document.getElementById("backgroundMusic");
+
+            // Attempt to play music when the page loads
+            music.play()
+                .then(() => {
+                    console.log("Music is playing!");
+                })
+                .catch(error => {
+                    console.log("Autoplay was blocked by the browser.", error);
+                });
+        });
