@@ -1,31 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("backgroundMusic");
 
-    if (!music) {
-        console.error("Background music element not found on index.html");
-        return;
-    }
+    if (!music) return;
 
     music.loop = true;
-    music.volume = 0.5;
 
-    // Try to play music automatically
-    music.play().catch(function (error) {
-        console.log("Autoplay blocked. Waiting for user interaction.");
+    // Try autoplay when the page loads.
+    music.play().catch(() => {
+        console.log("Waiting for user interaction to play music.");
     });
 
-    // Start music when the visitor clicks the page
+    // Play music after the user's first interaction.
     function startMusic() {
         if (music.paused) {
-            music.play().catch(function (error) {
-                console.error("Unable to play music:", error);
+            music.play().catch(error => {
+                console.log("Unable to play music:", error);
             });
         }
-
-        document.removeEventListener("click", startMusic);
-        document.removeEventListener("touchstart", startMusic);
     }
 
     document.addEventListener("click", startMusic);
     document.addEventListener("touchstart", startMusic);
+    document.addEventListener("keydown", startMusic);
 });
