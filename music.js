@@ -30,3 +30,4 @@ if (document.readyState === "loading") {
 } else {
     initializeBackgroundMusic();
 }
+
